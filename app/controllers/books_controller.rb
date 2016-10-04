@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
 
   def index
@@ -12,14 +13,14 @@ class BooksController < ApplicationController
 
 
   def new
-    @book = Book.new
+    @book = current_user.books.build
   end
 
   def edit
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
 
     respond_to do |format|
       if @book.save
@@ -58,7 +59,6 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :description, :author, :pages, :published)
     end
