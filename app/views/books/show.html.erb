@@ -1,29 +1,40 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>Pages:</strong>
-  <%= @book.pages %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @book.published %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-4">
+          <p>image here</p>
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><strong>Title:</strong></td>
+                  <td><%= @book.title %></td>
+                </tr>
+                <tr>
+                  <td><strong>Author:</strong></td>
+                  <td><%= @book.author %></td>
+                </tr>
+                <tr>
+                  <td><strong>Description:</strong></td>
+                  <td><%= @book.description %></td>
+                </tr>
+                <tr>
+                  <td><strong>Pages:</strong></td>
+                  <td><%= @book.pages %></td>
+                </tr>
+                <tr>
+                  <td><strong>Published:</strong></td>
+                  <td><%= @book.published %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+  
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
