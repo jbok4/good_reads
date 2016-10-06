@@ -9,7 +9,7 @@
 <% end %>
 <div class="row">
   <% @books.each do |book| %>
-    <div class="col-sm-6 col-md-3">
+    <div class="col-sm-4 col-md-3">
     <div class="thumbnail">
       <%= link_to (image_tag book.image.url(:medium), class: 'image'), book %>
     </div>
@@ -28,14 +28,14 @@
               <td><strong>Description:</strong></td>
               <td><%= book.description %></td>
             </tr> -->
-            <tr>
+<!--             <tr>
               <td><strong>Pages:</strong></td>
               <td><%= book.pages %></td>
-            </tr>
-            <tr>
+            </tr> -->
+<!--             <tr>
               <td><strong>Published:</strong></td>
               <td><%= book.published %></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>

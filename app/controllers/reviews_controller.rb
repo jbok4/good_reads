@@ -1,13 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_book
 
-  def index
-    @reviews = Review.all
-  end
-
-  def show
-  end
 
   def new
     @review = Review.new
@@ -19,9 +14,10 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.book_id = @book.id
 
     if @review.save
-      redirect_to @review
+      redirect_to @book
     else
       render 'new'
     end
@@ -33,12 +29,17 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
+    redirect_to root_path
   end
 
   private
 
     def set_review
       @review = Review.find(params[:id])
+    end
+
+    def set_book
+      @book = Book.find(params[:book_id])
     end
 
     def review_params
