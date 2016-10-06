@@ -9,8 +9,33 @@
 <div class="row">
   <% @books.each do |book| %>
     <div class="col-sm-6.col-md-3">
-
+      <p>image here</p>
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>Title:</strong></td>
+              <td><%= book.title %></td>
+            </tr>
+            <tr>
+              <td><strong>Author:</strong></td>
+              <td><%= book.author %></td>
+            </tr>
+            <tr>
+              <td><strong>Description:</strong></td>
+              <td><%= book.description %></td>
+            </tr>
+            <tr>
+              <td><strong>Pages:</strong></td>
+              <td><%= book.pages %></td>
+            </tr>
+            <tr>
+              <td><strong>Published:</strong></td>
+              <td><%= book.published %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <% end %>
+  <% end %>
 </div>
