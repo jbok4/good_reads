@@ -2,17 +2,20 @@
 <% if !user_signed_in? %>
   <div class="jumbotron">
     <h1>All the latest book reviews</h1>
-    <p>Site Subtitle</p>
+    <p>Find out which books everyone's talking about...</p>
     <p><%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
   </div>
 <% end %>
 <div class="row">
   <% @books.each do |book| %>
     <div class="col-sm-6.col-md-3">
-      <p>image here</p>
+      <p><%= link_to "image here", book_path(book) %></p>
       <div class="table-responsive">
         <table class="table">
           <tbody>
+          <tr>
+            <td><%= image_tag book.image.url(:medium) %></td>
+          </tr>
             <tr>
               <td><strong>Title:</strong></td>
               <td><%= book.title %></td>
