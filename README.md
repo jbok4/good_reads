@@ -43,7 +43,7 @@ Deployment
 
 #Built With
 
-Devise, Rails
+Devise, Rails 4
 
 #Contributing
 
