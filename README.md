@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 #Prerequisities
 
-you must have imagemagick installed. all you need to do is paste
+you must have imagemagick installed. all you need to do is paste:
 brew install imagemagick
 into the terminal before bundling
 
@@ -47,17 +47,14 @@ Deployment
 
 #Built With
 
-Devise, Rails 4
+Devise, Rails 4, raty.js, paperclip
 
 #Contributing
 
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
-#Versioning
 
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
-#Authors
+#Author
 
 Jaclyn Ciringione - Flatiron School, NYC
 

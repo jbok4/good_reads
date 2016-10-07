@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   
   resources :books do
     resources :reviews, except: [:show, :index]
@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   end
 
   root 'books#index'
+
+  #get '/auth/facebook/callback' => 'devise/sessions#create'
 
 end
