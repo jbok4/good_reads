@@ -8,6 +8,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 #Prerequisities
 
+you must have imagemagick installed. all you need to do is paste
+brew install imagemagick
+into the terminal before bundling
+
 What things you need to install the software and how to install them
 
 Give examples
