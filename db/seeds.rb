@@ -61,5 +61,5 @@ Review.create(comment: Faker::Lorem.paragraph, rating: counter, book_id: counter
 end
 
 20.times do
-  Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(5), user_id: rand(20))
+  Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(6), user_id: rand(20))
 end
