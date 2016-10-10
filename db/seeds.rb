@@ -40,6 +40,14 @@ Book.create(
   published: '2005 by Back Bay Books'
   )
 
+Book.create(
+  title: 'Heroes of The Frontier',
+  description: "A captivating, often hilarious novel of family, loss, wilderness, and the curse of a violent America, Dave Eggers' Heroes of the Frontier is a powerful examination of our contemporary life and a rousing story of adventure. Josie and her children's father have split up, she's been sued by a former patient and lost her dental practice, and she's grieving the death of a young man senselessly killed. When her ex asks to take the children to meet his new fiancee's family, Josie makes a run for it, figuring Alaska is about as far as she can get without a passport. Josie and her kids, Paul and Ana, rent a rattling old RV named the Chateau, and at first their trip feels like a vacation: They see bears and bison, they eat hot dogs cooked on a bonfire, and they spend nights parked along icy cold rivers in dark forests. But as they drive, pushed north by the ubiquitous wildfires, Josie is chased by enemies both real and imagined, past mistakes pursuing her tiny family, even to the very edge of civilization.",
+  author: 'Dave Eggers',
+  pages: 400,
+  published: 'July 26th 2016 by Knopf Publishing Group'
+  )
+
 20.times do
 User.create(
   name: Faker::Name.first_name,
