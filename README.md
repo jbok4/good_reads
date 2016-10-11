@@ -1,7 +1,7 @@
 #Good_Reads 
 
 * Using Ruby on Rails to create a basic replica site to goodreads.com
-* Built w/ Rails 5.0.0 and Ruby v2.2.3
+* Built w/ Rails 4.2.6 and Ruby v2.2.3
 
 #Getting Started
 
