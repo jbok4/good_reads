@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  belongs_to :user
   has_many :reviews
+  has_many :users, through: :reviews
 
   validates :title, presence: true
   validates_uniqueness_of :title
