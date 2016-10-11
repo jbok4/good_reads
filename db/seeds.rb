@@ -48,6 +48,21 @@ Book.create(
   published: 'July 26th 2016 by Knopf Publishing Group'
   )
 
+# Book.create(
+#   title: 'The First Fifteen Lives of Harry August',
+#   description: 'No matter what he does or the decisions he makes, when death comes, Harry always returns to where he began, a child with all the knowledge of a life he has already lived a dozen times before. Nothing ever changes. Until now. As Harry nears the end of his eleventh life, a little girl appears at his bedside. ‘I nearly missed you, Doctor August,’ she says. ‘I need to send a message.’ This is the story of what Harry does next, and what he did before, and how he tries to save a past he cannot change and a future he cannot allow.',
+#   author: 'Claire North',
+#   pages: 405,
+#   published: 'October 21st 2014 by Redhook'
+#   )
+
+# Book.create(
+#   title: 'Fortune Smiles',
+#   description: "In six masterly stories, Johnson delves deep into love and loss, natural disasters, the influence of technology, and how the political shapes the personal. 'Nirvana' portrays a programmer, whose wife has a rare disease, finding solace in a digital simulacrum of the president of the United States. In 'Hurricanes Anonymous,' a young man searches for the mother of his son in a Louisiana devastated by Hurricanes Katrina and Rita. “George Orwell Was a Friend of Mine” follows a former warden of a Stasi prison in East Germany who vehemently denies his past, even as pieces of it are delivered in packages to his door. And in the unforgettable title story, Johnson returns to his signature subject, North Korea, depicting two defectors from Pyongyang who are trying to adapt to their new lives in Seoul, while one cannot forget the woman he left behind. Unnerving, riveting, and written with a timeless quality, these stories confirm Johnson as one of America’s greatest writers and an indispensable guide to our new century.",
+#   author: 'Adam Johnson',
+#   pages: 320,
+#   published: 'August 27th 2015 by Doubleday'
+
 20.times do
 User.create(
   name: Faker::Name.first_name,
