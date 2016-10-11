@@ -42,7 +42,7 @@
           <% @book.reviews.each do |review| %>
             <div class="reviews">
               <div class="star-rating" data-score= <%= review.rating %> ></div>
-              <p><em><%= review.user.name %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
+              <p><em><%= review.user.name || "Anonymous"  %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
               <p><%= review.comment %></p>
             </div>
           <% end %>
