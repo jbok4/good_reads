@@ -13,6 +13,7 @@
 
 * Fork & clone repo
 * Run 'bundle install'
+* Run 'rake db:migrate' 
 * Run 'rake db:seed' 
 * Type 'rails s' in Terminal to run Rails server
 * Visit locahost:3000 to interact with the web app and enjoy!

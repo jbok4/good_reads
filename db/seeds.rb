@@ -62,6 +62,7 @@ Book.create(
 #   author: 'Adam Johnson',
 #   pages: 320,
 #   published: 'August 27th 2015 by Doubleday'
+# )
 
 20.times do
 User.create(
