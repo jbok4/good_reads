@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  resources :users, only: [:index]
+
   root 'books#index'
 
   #get '/auth/facebook/callback' => 'devise/sessions#create'

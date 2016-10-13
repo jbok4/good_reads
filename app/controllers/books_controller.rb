@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
 
   def index
-    @books = Book.all
+    @books = Book.all.order("created_at DESC")
   end
 
 
@@ -62,9 +62,17 @@ class BooksController < ApplicationController
 
   private
 
-    def set_book
-      @book = Book.find(params[:id])
-    end
+   def set_book
+      # attempt to make a redirect if that item no longer exists
+      # if @book.exists?
+       @book = Book.find(params[:id])
+      # else
+      #   respond_to do |format|
+      #     format.html { redirect_to books_url, notice: 'That book does not exist.' }
+      #     format.json { head :no_content }
+      #   end
+      # end
+   end
 
     def book_params
       params.require(:book).permit(:title, :description, :author, :pages, :published, :image)
