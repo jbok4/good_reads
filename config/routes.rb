@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   root 'books#index'
-
+    get '/random', to: 'books#random'
   #get '/auth/facebook/callback' => 'devise/sessions#create'
 
 end

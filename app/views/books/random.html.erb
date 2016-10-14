@@ -1,0 +1,48 @@
+<h2>Your Next Read</h2>
+
+
+<%= link_to 'Back', books_path %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-4">
+          <%= image_tag @book.image.url(:medium) %>
+          <div class="star-rating" data-score= <%= @avg_review %> ></div>
+          <em><%= "#{@reviews.length} reviews" %></em>
+          
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+               
+                <tr>
+                  <td><strong>Author:</strong></td>
+                  <td><%= @book.author %></td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      <div class="col-md-7 col-md-offset-1">
+        <h1 class="review_title"><%= @book.title %></h1>
+        <p><%= @book.description %></p>
+
+        <h3>User Reviews</h3>
+        <% if @book.reviews.blank? %>
+          <h3>Be the first to review this book</h3>
+          <%= link_to "Write Review", new_book_review_path(@book), class: "btn btn-danger" %>
+        <% else %>
+          <% @book.reviews.each do |review| %>
+            <div class="reviews">
+              <div class="star-rating" data-score= <%= review.rating %> ></div>
+              <p><em><%= review.user.name || "Anonymous"  %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
+              <p><%= review.comment %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :random]
   before_action :authenticate_user!, except: [:index, :show]
 
 
@@ -16,6 +16,10 @@ class BooksController < ApplicationController
     else
       @avg_review = @reviews.average(:rating).round(2)
     end
+  end
+
+  def random
+    @books = Book.random
   end
 
 
