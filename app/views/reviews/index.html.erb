@@ -1,10 +1,1 @@
-<%= link_to 'Back', users_path %>
-
-         
-
-          <% @user.reviews.each do |review| %>
-
-              <p><em><%= review.book.title  %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
-              <p><%= review.comment %></p>
-
-          <% end %>
+reviews index

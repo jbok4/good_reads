@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :set_book, except: [:index]
+  before_action :set_book, except: [:index, :show]
 
   def index
     @reviews = Review.all
@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+  end
+
+  def show
   end
 
   def edit

@@ -1,0 +1,4 @@
+
+  <p><%= review.comment %></p>
+  <footer><cite><%= review.user.name || "Anonymous" %>, <%= link_to "#{time_ago_in_words(review.created_at)} ago", user_review_path(review.user, review) %></cite></footer></br>
+
