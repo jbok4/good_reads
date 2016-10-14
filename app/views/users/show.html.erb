@@ -1,0 +1,33 @@
+<%= link_to 'Back', users_path %>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-4">
+         
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+               
+                <tr>
+                  <td><strong>User:</strong></td>
+                  <td><%= @user.name %></td>
+                </tr>
+                
+                <tr>
+                  <td><strong>Email:</strong></td>
+                  <td><%= @user.email %></td>
+                </tr>
+                
+                <tr>
+                  <td><strong>Reviews:</strong></td>
+                  <td><%= link_to "See Reviews:", user_reviews_path(@user) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
