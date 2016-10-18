@@ -2,11 +2,9 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-
   def index
     @books = Book.all.order("created_at DESC")
   end
-
 
   def show
     @reviews = Review.where(book_id: @book.id).order("created_at DESC")
@@ -17,7 +15,6 @@ class BooksController < ApplicationController
       @avg_review = @reviews.average(:rating).round(2)
     end
   end
-
 
   def new
     @book = current_user.books.build
