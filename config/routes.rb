@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   root 'books#index'
+  get '/books/customerfave', to: 'books#customerfave'
 
   #get '/auth/facebook/callback' => 'devise/sessions#create'
 

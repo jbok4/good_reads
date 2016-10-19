@@ -57,18 +57,15 @@ class BooksController < ApplicationController
     end
   end
 
+  def customerfave
+    @book = Book.random
+  end
+
+
   private
 
    def set_book
-      # attempt to make a redirect if that item no longer exists
-      # if @book.exists?
        @book = Book.find(params[:id])
-      # else
-      #   respond_to do |format|
-      #     format.html { redirect_to books_url, notice: 'That book does not exist.' }
-      #     format.json { head :no_content }
-      #   end
-      # end
    end
 
     def book_params
