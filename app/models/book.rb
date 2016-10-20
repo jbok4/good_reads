@@ -11,7 +11,7 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def self.random
-    Book.find(rand(9))
+    Book.find(rand(1..9))
   end
 
 end
