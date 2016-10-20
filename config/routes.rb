@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks" }
   
+  get '/books/favorite', to: 'books#favorite'
+
   resources :books do
     resources :reviews, except: [:show, :index]
   end
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   root 'books#index'
-  get '/books/random', to: 'books#random'
+
 
   #get '/auth/facebook/callback' => 'devise/sessions#create'
 

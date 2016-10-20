@@ -11,8 +11,9 @@ class Book < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def self.random
-    id = rand(1..9)
-    Book.find(params[id])
+    # id = rand(1..9)
+    # Book.find(params[id])
+    Book.order("RANDOM()").limit(1)
   end
 
 end

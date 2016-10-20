@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  #before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :set_book, except: [:index, :new, :create, :random]
+  before_action :set_book, except: [:index, :new, :create, :favorite]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -24,8 +23,8 @@ class BooksController < ApplicationController
   def edit
   end
 
-  def random
-    @book = Book.random
+  def favorite
+    @books = Book.random
   end
 
   def create
