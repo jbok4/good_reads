@@ -20,6 +20,9 @@
 
 * For fun, you can add the images yourself to each of the titles by editing each book, and then finding the corresponding image in the app/assets/images folder
 
+#License
+
+* For licensing information, please see LICENSE.md file
 
 #Author
 
