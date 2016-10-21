@@ -24,6 +24,10 @@
 
 * For licensing information, please see LICENSE.md file
 
+#Contributing
+
+* For information on how to contribute, please see CONTRIBUTING.md file
+
 #Author
 
 * Jaclyn Ciringione - Flatiron School, NYC
