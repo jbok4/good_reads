@@ -4,6 +4,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.order("created_at DESC")
+
   end
 
   def show
@@ -18,6 +19,7 @@ class BooksController < ApplicationController
 
   def new
     @book = current_user.books.build
+    @book.reviews.build
   end
 
   def edit

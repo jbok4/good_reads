@@ -37,12 +37,15 @@
   </div><br>
 
   <%= f.fields_for :reviews do |r| %>
-  <div class="field">
-    <p>Rating, 1-5: <%= r.number_field :rating %></p>
-  </div>
-  <div class="field">
-    <p>Review: <%= r.text_field :comment %></p>
-  </div>
+  <p>Review this book?</p>
+    <div class="field">
+      <%= r.label :rating %></br>
+      <p>1-5 Scale: <%= r.number_field :rating %></p>
+    </div><br>
+    <div class="field">
+      <%= r.label :comment %></br>
+      <%= r.text_area :comment %>
+    </div><br>
   
   <% end %>
 
