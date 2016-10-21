@@ -35,6 +35,18 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div><br>
+
+  <%= f.fields_for :reviews do |r| %>
+  <div class="field">
+    <p>Rating, 1-5: <%= r.number_field :rating %></p>
+  </div>
+  <div class="field">
+    <p>Review: <%= r.text_field :comment %></p>
+  </div>
+  
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

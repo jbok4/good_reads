@@ -16,4 +16,13 @@ class Book < ActiveRecord::Base
     Book.order("RANDOM()").limit(1)
   end
 
+  def reviews_attributes=(hash)
+    hash.each do |review_index, review_attributes|
+      review = self.reviews.new
+      review_attributes.each do |review_attribute, attribute_value|
+        review.send("#{review_attribute}=", attribute_value)
+      end
+    end
+  end
+
 end
