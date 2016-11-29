@@ -12,19 +12,19 @@
 
 
          
-         <!--  <div class="table-responsive">
+          <div class="table-responsive">
             <table class="table">
               <tbody>
                
                 
-                <tr><% @user.reviews.each do |review| %>
+                <tr class="userReviews"><% @user.reviews.each do |review| %>
                    <%= render partial: 'reviews/list', locals: {review: review} %>
                 <% end %>                 
                 </tr>
               </tbody>
             </table>
 
-          </div> -->
+          </div>
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
 
@@ -41,9 +41,10 @@ $(function () {
       var user = data["user"];
       $(".userName").text(data["name"]);
       $(".userEmail").text(data["email"]);
+      $(".userReviews").text(data["reviews"]["comment"]);
 
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]) + 1;
+      $(".js-next").attr("data-id", data["id"]);
     });
   });
 });
