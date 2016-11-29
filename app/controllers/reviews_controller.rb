@@ -12,6 +12,11 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    # @review = Review.find(params[:id])
+    # respond_to do |f|
+    #   f.html { render :show }
+    #   f.json { render json: @user }
+    # end
   end
 
   def edit
