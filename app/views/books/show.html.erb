@@ -29,14 +29,14 @@
                 </tr>
               </tbody>
             </table>
-            <%= link_to "Write a Review", new_book_review_path(@book) %>
+            <%= link_to "Write a Review", new_book_review_path(@book), id: "book_review", remote: true %>
           </div>
         </div>
       <div class="col-md-7 col-md-offset-1">
         <h1 class="review_title"><%= @book.title %></h1>
         <p><%= @book.description %></p>
 
-        <h3>User Reviews</h3>
+        <h3 id="user-reviews">User Reviews</h3>
         <% if @book.reviews.blank? %>
           <h3>Be the first to review this book</h3>
           <%= link_to "Write Review", new_book_review_path(@book), class: "btn btn-danger" %>
@@ -57,11 +57,28 @@
     </div>
   </div>
 </div>
-  
 
 
 
 <script>
+
+  $(function(){
+    $("a.load_reviews").on("click", function(e){
+      $.get(this.href).success(function(json){
+
+    // clear the OL html (in case there were stale comments)
+          var $ol = $("div.reviews ol")
+          $ol.html("") // emptied the OL
+    //     //
+    // iterate over each comment within json
+          json.forEach(function(review){
+    // with each comment data, append an LI to the OL with the comment content
+            $ol.append("<li>" + review.comment + "</li>");
+    // load that response into the HTML of the page.
+       e.preventDefault();
+     })
+
+      
     $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
