@@ -4,13 +4,11 @@ $("a.userReviews").on("click", function(e){
   $.ajax({
     method: "GET",
     url: this.href
-  }).done(function(data) {
-      //get a response
-    $("#inject").append(data)
+    //get a response
+  }).success(function(data) {
+      //load response into the page
+    $("#inject").html(data)
   });
-
-
-  //load response into the page
 
   e.preventDefault();
 })
