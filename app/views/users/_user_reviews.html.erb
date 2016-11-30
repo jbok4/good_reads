@@ -1,0 +1,10 @@
+<table class="table">
+  <tbody>
+   
+    
+    <tr class="userReviews"><% @user.reviews.each do |review| %>
+       <%= render partial: 'reviews/list', locals: {review: review} %>
+    <% end %>                 
+    </tr>
+  </tbody>
+</table>
