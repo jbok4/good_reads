@@ -9,13 +9,10 @@
 
 <p class="userEmail"><strong>Email: </strong><%= @user.email %></p></br>
 
-
+<%= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br>
 
          
-          <!-- <div class="table-responsive">
-            <%= render partial: 'user_reviews' %>
 
-          </div> -->
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
 
