@@ -1,1 +1,5 @@
-reviews index
+<ol>
+  <% @reviews.each do |review| %>
+    <li><%= review.comment %></li>
+  <% end %>
+</ol>

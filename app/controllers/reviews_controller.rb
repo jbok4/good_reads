@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    render 'reviews/index', :layout => false
   end
 
   def new
