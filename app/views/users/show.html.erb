@@ -12,7 +12,7 @@
 
 
          
-          <div class="table-responsive">
+          <!-- <div class="table-responsive">
             <table class="table">
               <tbody>
                
@@ -24,7 +24,7 @@
               </tbody>
             </table>
 
-          </div>
+          </div> -->
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
 
@@ -39,12 +39,12 @@ $(function () {
     $.get("/users/" + nextId + ".json", function(data) {
  
       var user = data["user"];
-      $(".userName").text(data["name"]);
-      $(".userEmail").text(data["email"]);
-      $(".userReviews").text(data["reviews"]["comment"]);
+      $(".userName").text("User: " + user["name"]);
+      $(".userEmail").text("Email: " + user["email"]);
+      // $(".userReviews").text(user["reviews"]["comment"]);
 
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
+      $(".js-next").attr("data-id", user["id"]);
     });
   });
 });

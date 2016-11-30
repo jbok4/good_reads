@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+, adapter: :jsonclass ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_book, except: [:index, :show]
@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     respond_to do |f|
       f.html { render :show }
-      f.json { render json: @review }
+      f.json { render json: @review, adapter: :json }
     end
   end
 

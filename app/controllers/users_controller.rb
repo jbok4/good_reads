@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all.order("created_at DESC")
+    @users = User.all#.order("created_at DESC")
   end
 
   def show
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @reviews = Review.where(user_id: @user.id).order("created_at DESC")
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @user}
+      format.json { render json: @user, adapter: :json}
     end
   end
 
