@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_action :set_book, except: [:index, :show]
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.order("created_at DESC")
     #render 'reviews/index', :layout => false
   end
 
