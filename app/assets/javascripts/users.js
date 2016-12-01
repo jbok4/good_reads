@@ -15,13 +15,13 @@
 // });
 
 
-$(function () {
-$("a.userReviews").on("click", function(e){
+// $(function () {
+// $("a.userReviews").on("click", function(e){
 
-$.get(this.href).success(function(data){
-  $("#inject").html(data)
-})
+// $.get(this.href).success(function(data){
+//   $("#inject").html(data)
+// })
 
-  e.preventDefault();
-})
-});
+//   e.preventDefault();
+// })
+// });

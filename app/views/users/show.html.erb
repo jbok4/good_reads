@@ -9,11 +9,10 @@
 
 <p class="userEmail"><strong>Email: </strong><%= @user.email %></p></br>
 
+<a href="#" class="js-reviews" data-id="<%=@user.id%>">Reviews</a></br>
 <p id="inject"></p>
 
-<%= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br>
-
-         
+<%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %>
 
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
@@ -37,6 +36,17 @@ $(function () {
       $(".js-next").attr("data-id", user["id"]);
       // re-set the reviews to blank
       $("#inject").html("");
+
+    });
+    event.preventDefault();
+  });
+
+  $(".js-reviews").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id"));
+    $.get("/users/" + nextId + ".json", function(data) {
+ 
+      var user = data["user"];
+      $("#inject").text("Most Recent Review: " + user["reviews"][0]["comment"]);
 
     });
     event.preventDefault();
