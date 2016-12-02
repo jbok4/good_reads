@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.order("created_at DESC")
-    #render 'reviews/index', :layout => false
+    render 'reviews/index', :layout => false
   end
 
   def new
