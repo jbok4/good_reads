@@ -23,9 +23,15 @@ class ReviewsController < ApplicationController
     @review.book_id = @book.id
 
     if @review.save
-      redirect_to @book
+      respond_to do |format|
+        format.html {redirect_to @book}
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html {render 'new'}
+        format.js
+      end
     end
   end
 
