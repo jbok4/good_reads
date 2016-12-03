@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.delete
+  end
+
 end
 
 # devise class helper methods
