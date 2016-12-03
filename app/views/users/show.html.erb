@@ -14,8 +14,8 @@
 
 <!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
 
-<a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br>
-<p id="inject-all"></p>
+<!-- <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br>
+<p id="inject-all"></p> -->
 
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
@@ -56,13 +56,22 @@ $(function () {
     });
     event.preventDefault();
   });
-  // trying to load all the users reviews
-$(".all-reviews").on("click", function(e) {
-$(".all-reviews").hide().after('<%= j render("reviews/user_list") %>');
-e.preventDefault();
 
-})
-});
+   });
+
+//   // trying to load all the users reviews
+// $(".all-reviews").on("click", function(e) {
+//   var nextId = parseInt($(".js-next").attr("data-id"));
+//     $.get("/users/" + nextId + ".json", function(data) {
+//   var user = data["user"];
+//   user.reviews.forEach(function(){
+//     ('<%= j render("reviews/user_list") %>')
+// });
+// // $(".all-reviews").hide().after('<%= j render("reviews/user_list") %>');
+// e.preventDefault();
+
+// })
+// });
 
 
 
