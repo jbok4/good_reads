@@ -15,7 +15,9 @@
 <!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
 
  <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br>
-<p id="inject-all"></p> 
+<p id="inject-all">
+  <%= render @reviews %>
+</p> 
 
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
