@@ -2,3 +2,17 @@
 // renders form partial and escapes the html with js
 
   $("#book_review").hide().after('<%= j render("form") %>');
+
+  // $('#new_review').on('submit', function(e) {
+  //   e.preventDefault()
+  //   console.log('hello')
+
+  //   $.ajax({
+  //     url:,
+  //     method,
+  //     success: function(data) {
+  //       //append to review list the new data that is returned
+  //     }
+  //   })
+  // $('.review_title').append('appended')
+  // })
