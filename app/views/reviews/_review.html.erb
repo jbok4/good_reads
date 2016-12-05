@@ -1,0 +1,9 @@
+<div class="reviews">
+  <div class="star-rating" data-score= <%= review.rating %> ></div>
+  <% if review.user_id? %>
+    <p><em><%= review.user.name %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
+  <% else %>
+    <p><em>Anonymous</em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
+    <% end %>
+  <p><%= review.comment %></p>
+</div>

@@ -1,7 +1,11 @@
 // Links with write a review link on book show page 
 // renders form partial and escapes the html with js
 
-  $("#book_review").hide().after('<%= j render("form") %>');
+  // $("#book_review").hide().after('<%= j render("form") %>');
+
+var form = $('<%= j render("form") %>');
+var wrapper = $('<div>').attr('id', 'book_review').append(form);
+$('place-here').append(wrapper)
 
   // $('#new_review').on('submit', function(e) {
   //   e.preventDefault()
