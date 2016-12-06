@@ -1,0 +1,8 @@
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="reviews">
+    <div class="star-rating" data-score="1" title="bad"><img alt="1" src="/assets/star-on.png" title="bad">&nbsp;<img alt="2" src="/assets/star-off.png" title="bad">&nbsp;<img alt="3" src="/assets/star-off.png" title="bad">&nbsp;<img alt="4" src="/assets/star-off.png" title="bad">&nbsp;<img alt="5" src="/assets/star-off.png" title="bad"><input name="score" type="hidden" value="1" readonly=""></div>
+      <p><em id="review_user_name">{{ username }}</em> posted a review {{ review.created_at }}:</p>
+    <p id="review_comment">{{ review.comment }}</p>
+  </div>
+</script>
+

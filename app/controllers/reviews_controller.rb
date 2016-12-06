@@ -32,9 +32,10 @@ class ReviewsController < ApplicationController
     @review.book_id = @book.id
 
     if @review.save
+      response = {review: @review, username: @review.user.name }
       respond_to do |f|
         f.html {redirect_to @book}
-        f.js
+        f.json { render json: response, adapter: :json }
 
       end
     else
@@ -50,6 +51,8 @@ class ReviewsController < ApplicationController
     @review.destroy
     redirect_to root_path
   end
+
+
 
   private
 

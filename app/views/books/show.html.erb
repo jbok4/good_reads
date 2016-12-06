@@ -29,6 +29,8 @@
                 </tr>
               </tbody>
             </table>
+
+            <!-- how would i do this without remote true? -->
             <%= link_to "Write a Review", new_book_review_path(@book), id: "book_review", remote: true %>
           </div>
         </div>
@@ -43,6 +45,7 @@
         <% else %>
         <div id="place-here">
           <%= render @reviews %>
+          
         </div>
         <% end %>
       </div>
@@ -50,12 +53,13 @@
   </div>
 </div>
 
+<%= render "reviews/formatted" %>
 
 
 <script>
 
   // $(function(){
-  //   $("#book_review").hide().after('<%= j render("form") %>');
+  //   $("#book_review").hide().after('<%#= j render("form") %>');
   //   $("form").submit(function(e){
   //     e.preventDefault();
   //     var values = $(this).serialize();

@@ -1,73 +1,48 @@
 // Links with write a review link on book show page 
 // renders form partial and escapes the html with js
 
+
   $("#book_review").hide().after('<%= j render("form") %>');
 
-// var form = $('<%= j render("form") %>');
-// var wrapper = $('<div>').attr('id', 'book_review').append(form);
-// $('place-here').append(wrapper)
 
 
-// instructions from Cernan
-
- // $('#new_review').on('submit', function(e) {
-  //   e.preventDefault()
-  //   console.log('hello')
-
-  //   $.ajax({
-  //     url:,
-  //     method,
-  //     success: function(data) {
-  //       //append to review list the new data that is returned
-            // var review = new Review(data)
-            // review.addReviewToDom()
-  //     }
-  //   })
+function Review(attributes){
+  this.comment = attributes.comment;
+  this.rating = attributes.rating;
+  this.id = attributes.id;
+  this.user_id = attributes.user_id;
+  this.created_at = attributes.created_at;
+}
 
 
-//     function Review(data) {
-//       this.content = data.content
-//     }
+$(function(){
+  $('#new_review').on('submit', function(e) {
+    
 
-//     Review.prototype.addReviewToDom = function () {
-//       $('.review_list').append('<li>++</li>')
-//     }
+    var $form = $(this);
+    var action = $form.attr("action");
+    var params = $form.serialize();
 
-//   // })
+    $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST",
+        success: function(json) {
+          var source   = $("#entry-template").html();
+          var template = Handlebars.compile(source);
+          var html    = template(json);
+          console.log(json)
+          $("#place-here").prepend(html);
 
-// function Item(attributes){
-//   this.comment = attributes.comment;
-//   this.id = attributes.id;
-// }
 
-// // need to include handlebars sourcecode into app
-// $(function() {
-//   Item.templateSource = $("#item-template").html();
-//   Item.template = Handlebars.compile(Item.templateSource);
-// })
+      }, error:  function(jqxhr, textStatus, error) {
+        console.log(jqxhr, textStatus, error)
+      }
 
-// Item.prototype.renderLI = function(){
+    })
+    e.preventDefault();
 
-// }
+  })
 
-// $(function(){
-//   $('#new_review').on('submit', function(e) {
-//     e.preventDefault()
-//     // console.log('hello')
-//     var $form = $(this);
-//     var action = $form.attr("action");
-//     var params = $form.serialize();
-
-//     $.ajax({
-//         url: action,
-//         data: params,
-//         dataType: "json",
-//         method: "POST",
-//         success: function(json) {
-//         //append to review list the new data that is returned
-//     var item = new Item(json);
-//       }
-//     })
-//   $('.review_title').append(html)
-//   })
-// })
+})
