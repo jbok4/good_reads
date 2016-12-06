@@ -9,10 +9,15 @@
 
 <p class="userEmail"><strong>Email: </strong><%= @user.email %></p></br>
 
-<a href="#" class="js-reviews" data-id="<%=@user.id%>">Reviews</a></br>
+<a href="#" class="js-reviews" data-id="<%=@user.id%>">Most Recent Review</a></br>
 <p id="inject"></p>
 
-<%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %>
+<!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
+
+ <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br>
+<div id="inject-all">
+  <%#= render @reviews %>
+</div> 
 
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
@@ -35,31 +40,42 @@ $(function () {
       $(".js-next").attr("data-id", user["id"]);
       // re-set the reviews to blank
       $("#inject").html("");
+      $("#inject-all").html("");
 
     });
     event.preventDefault();
   });
+
+
 // this works to load the users most recent review. 
   $(".js-reviews").on("click", function() {
+
     var nextId = parseInt($(".js-next").attr("data-id"));
     $.get("/users/" + nextId + ".json", function(data) {
  
       var user = data["user"];
-      $("#inject").text("Most Recent Review: " + user["reviews"][user.reviews.length-1]["comment"]);
+      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"]);
 
     });
     event.preventDefault();
   });
-});
+
+   });
+
+  // trying to load all the users reviews
+// $(".all-reviews").on("click", function(e) {
+//   var nextId = parseInt($(".js-next").attr("data-id"));
+//     $.get("/users/" + nextId + ".json", function(data) {
+//   var user = data["user"];
+//   user.reviews.forEach(function(){
+//     ('<%= j render("reviews/user_list") %>')
+// });
+// // $(".all-reviews").hide().after('<%= j render("reviews/user_list") %>');
+// e.preventDefault();
+
+// })
+// });
 
 
-// trying to load all the users reviews
-// $(".js-reviews").on("click", function(e) {
-//   $.ajax({
-//     url: this.href,
-//     datatype: 'script'
-//   })
-//   e.preventDefault();
-// })
-// })
+
 </script>

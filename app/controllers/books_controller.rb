@@ -15,6 +15,10 @@ class BooksController < ApplicationController
     else
       @avg_review = @reviews.average(:rating).round(2)
     end
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @book}
+    end
   end
 
   def new

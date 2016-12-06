@@ -41,17 +41,9 @@
           <h3>Be the first to review this book</h3>
           <%= link_to "Write Review", new_book_review_path(@book), class: "btn btn-danger" %>
         <% else %>
-          <% @book.reviews.each do |review| %>
-            <div class="reviews">
-              <div class="star-rating" data-score= <%= review.rating %> ></div>
-              <% if review.user_id? %>
-                <p><em><%= review.user.name %></em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
-              <% else %>
-                <p><em>Anonymous</em> posted a review <%= time_ago_in_words(review.created_at) %> ago:</p>
-                <% end %>
-              <p><%= review.comment %></p>
-            </div>
-          <% end %>
+        <div id="place-here">
+          <%= render @reviews %>
+        </div>
         <% end %>
       </div>
     </div>
@@ -62,25 +54,22 @@
 
 <script>
 
-  $(function(){
-    $("a.load_reviews").on("click", function(e){
-      $.get(this.href).success(function(json){
-
-    // clear the OL html (in case there were stale comments)
-          var $ol = $("div.reviews ol")
-          $ol.html("") // emptied the OL
-    //     //
-    // iterate over each comment within json
-          json.forEach(function(review){
-    // with each comment data, append an LI to the OL with the comment content
-            $ol.append("<li>" + review.comment + "</li>");
-    // load that response into the HTML of the page.
-       e.preventDefault();
-     })
+  // $(function(){
+  //   $("#book_review").hide().after('<%= j render("form") %>');
+  //   $("form").submit(function(e){
+  //     e.preventDefault();
+  //     var values = $(this).serialize();
+  //     // trying to post it to reviews/show?
+  //     var postReview = $.post('/reviews', values);
+  //     postReview.done(function(data){
+  //       var review = data['review'];
+  //       $("#review_user_name").text(review[user_id]);
+  //       $("#review_comment").text(review[comment]);
+  //     })
           
-  })
+  // })
 
-  })
+
       
     $('.star-rating').raty({
       path: '/assets/',

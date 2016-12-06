@@ -1,0 +1,6 @@
+<% @user.reviews.each do |review| %>
+  
+  <p><%= review.comment %></p>
+  <footer><cite><%= review.book.title %></cite></footer></br>
+
+<% end %>
