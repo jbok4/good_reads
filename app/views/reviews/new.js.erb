@@ -7,6 +7,34 @@
 // var wrapper = $('<div>').attr('id', 'book_review').append(form);
 // $('place-here').append(wrapper)
 
+
+// instructions from Cernan
+
+ // $('#new_review').on('submit', function(e) {
+  //   e.preventDefault()
+  //   console.log('hello')
+
+  //   $.ajax({
+  //     url:,
+  //     method,
+  //     success: function(data) {
+  //       //append to review list the new data that is returned
+            // var review = new Review(data)
+            // review.addReviewToDom()
+  //     }
+  //   })
+
+
+    function Review(data) {
+      this.content = data.content
+    }
+
+    Review.prototype.addReviewToDom = function () {
+      $('.review_list').append('<li>++</li>')
+    }
+
+  // })
+
 function Item(attributes){
   this.comment = attributes.comment;
   this.id = attributes.id;
