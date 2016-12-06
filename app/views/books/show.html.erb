@@ -55,25 +55,21 @@
 <script>
 
   $(function(){
-  //   $("a.load_reviews").on("click", function(e){
-  //     $.get(this.href).success(function(json){
-  //       e.preventDefault();
-
-  //   // clear the OL html (in case there were stale comments)
-  //         var $ol = $("div.reviews ol")
-  //         $ol.html("") // emptied the OL
-  //   //     //
-  //   // iterate over each comment within json
-  //         json.forEach(function(review){
-  //   // with each comment data, append an LI to the OL with the comment content
-  //           $ol.append("<li>" + review.comment + "</li>");
-  //   // load that response into the HTML of the page.
-       
-  //    })
+    $("#book_review").hide().after('<%= j render("form") %>');
+    $("form").submit(function(e){
+      e.preventDefault();
+      var values = $(this).serialize();
+      // trying to post it to reviews/show?
+      var postReview = $.post('/reviews', values);
+      postReview.done(function(data){
+        var review = data['review'];
+        $("#review_user_name").text(review[user_id]);
+        $("#review_comment").text(review[comment]);
+      })
           
-  // })
+  })
 
-  // })
+  })
       
     $('.star-rating').raty({
       path: '/assets/',
