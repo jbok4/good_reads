@@ -55,21 +55,21 @@
 <script>
 
   $(function(){
-  //   $("#book_review").hide().after('<%= j render("form") %>');
-  //   $("form").submit(function(e){
-  //     e.preventDefault();
-  //     var values = $(this).serialize();
-  //     // trying to post it to reviews/show?
-  //     var postReview = $.post('/reviews', values);
-  //     postReview.done(function(data){
-  //       var review = data['review'];
-  //       $("#review_user_name").text(review[user_id]);
-  //       $("#review_comment").text(review[comment]);
-  //     })
+    $("#book_review").hide().after('<%= j render("form") %>');
+    $("form").submit(function(e){
+      e.preventDefault();
+      var values = $(this).serialize();
+      // trying to post it to reviews/show?
+      var postReview = $.post('/reviews', values);
+      postReview.done(function(data){
+        var review = data['review'];
+        $("#review_user_name").text(review[user_id]);
+        $("#review_comment").text(review[comment]);
+      })
           
-  // })
+  })
 
-  // })
+  
       
     $('.star-rating').raty({
       path: '/assets/',

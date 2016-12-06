@@ -7,39 +7,39 @@
 // var wrapper = $('<div>').attr('id', 'book_review').append(form);
 // $('place-here').append(wrapper)
 
-function Item(attributes){
-  this.comment = attributes.comment;
-  this.id = attributes.id;
-}
+// function Item(attributes){
+//   this.comment = attributes.comment;
+//   this.id = attributes.id;
+// }
 
-// need to include handlebars sourcecode into app
-$(function() {
-  Item.templateSource = $("#item-template").html();
-  Item.template = Handlebars.compile(Item.templateSource);
-})
+// // need to include handlebars sourcecode into app
+// $(function() {
+//   Item.templateSource = $("#item-template").html();
+//   Item.template = Handlebars.compile(Item.templateSource);
+// })
 
-Item.prototype.renderLI = function(){
+// Item.prototype.renderLI = function(){
 
-}
+// }
 
-$(function(){
-  $('#new_review').on('submit', function(e) {
-    e.preventDefault()
-    // console.log('hello')
-    var $form = $(this);
-    var action = $form.attr("action");
-    var params = $form.serialize();
+// $(function(){
+//   $('#new_review').on('submit', function(e) {
+//     e.preventDefault()
+//     // console.log('hello')
+//     var $form = $(this);
+//     var action = $form.attr("action");
+//     var params = $form.serialize();
 
-    $.ajax({
-        url: action,
-        data: params,
-        dataType: "json",
-        method: "POST",
-        success: function(json) {
-        //append to review list the new data that is returned
-    var item = new Item(json);
-      }
-    })
-  $('.review_title').append(html)
-  })
-})
+//     $.ajax({
+//         url: action,
+//         data: params,
+//         dataType: "json",
+//         method: "POST",
+//         success: function(json) {
+//         //append to review list the new data that is returned
+//     var item = new Item(json);
+//       }
+//     })
+//   $('.review_title').append(html)
+//   })
+// })
