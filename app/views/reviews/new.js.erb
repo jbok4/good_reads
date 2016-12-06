@@ -7,16 +7,33 @@
 // var wrapper = $('<div>').attr('id', 'book_review').append(form);
 // $('place-here').append(wrapper)
 
-  // $('#new_review').on('submit', function(e) {
-  //   e.preventDefault()
-  //   console.log('hello')
+function Item(attributes){
+  this.comment = attributes.comment;
+  this.id = attributes.id;
+}
 
-  //   $.ajax({
-  //     url:,
-  //     method,
-  //     success: function(data) {
-  //       //append to review list the new data that is returned
-  //     }
-  //   })
-  // $('.review_title').append('appended')
-  // })
+Item.prototype.renderLI = function(){
+  
+}
+
+$(function(){
+  $('#new_review').on('submit', function(e) {
+    e.preventDefault()
+    // console.log('hello')
+    var $form = $(this);
+    var action = $form.attr("action");
+    var params = $form.serialize();
+
+    $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST",
+        success: function(json) {
+        //append to review list the new data that is returned
+    var item = new Item(json);
+      }
+    })
+  $('.review_title').append(html)
+  })
+})
