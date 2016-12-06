@@ -63,20 +63,20 @@ Book.create(
   pages: 320,
   published: 'August 27th 2015 by Doubleday'
 )
-counter = 1
+# counter = 1
 
-20.times do
-User.create(
-  name: Faker::Name.first_name,
-  email: Faker::Internet.email,
-  password: Faker::Internet.password
-  )
+# 20.times do
+# User.create(
+#   name: Faker::Name.first_name,
+#   email: Faker::Internet.email,
+#   password: Faker::Internet.password
+#   )
 
 
- Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(9), user_id: counter)
-   counter += 1
- end
+#  Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(9), user_id: counter)
+#    counter += 1
+#  end
 
-20.times do
-  Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(9), user_id: rand(20))
-end
+# 20.times do
+#   Review.create(comment: Faker::Lorem.paragraph, rating: rand(5), book_id: rand(9), user_id: rand(20))
+# end
