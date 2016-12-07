@@ -60,17 +60,32 @@ $(function () {
     e.preventDefault();
   });
 
- 
+ // this works to load all the users reviews. 
+  $(".all-reviews").on("click", function(e) {
 
-$("a.all-reviews").on("click", function(e){
-  $.ajax({
-    url: this.href,
-    dataType: 'script'
-  })
-  e.preventDefault();
-})
-
+    var id = parseInt($(".js-next").attr("data-id"));
+    $.get("/users/" + id + ".json", function(data) {
+      var user = data["user"]["reviews"];
+      $.each(user, function() {
+        $.each(this, function (comment, value) {
+          // console.log(name, value)
+       $("#inject-all").append(value + "<br>");
+      })
+        });
+    });
+    e.preventDefault();
   });
+  });
+
+// $("a.all-reviews").on("click", function(e){
+//   $.ajax({
+//     url: this.href,
+//     dataType: 'script'
+//   })
+//   e.preventDefault();
+// })
+
+//   });
 
 
 </script>
