@@ -14,10 +14,10 @@
 
 <!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
 
- <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br>
+ <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br><br>
 <div id="inject-all">
   <%#= render @reviews %>
-</div> 
+</div>
 
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
         </div>
@@ -60,32 +60,25 @@ $(function () {
     e.preventDefault();
   });
 
+
  // this works to load all the users reviews. 
   $(".all-reviews").on("click", function(e) {
 
     var id = parseInt($(".js-next").attr("data-id"));
+    
     $.get("/users/" + id + ".json", function(data) {
-      var user = data["user"]["reviews"];
-      $.each(user, function() {
-        $.each(this, function (comment, value) {
-          // console.log(name, value)
-       $("#inject-all").append(value + "<br>");
-      })
-        });
+        var user = data["user"]["reviews"];
+
+        for (i = 0; i < user.length; i++) { 
+          console.log(user[i]["comment"])
+          $("#inject-all").append(user[i]["comment"] + " posted " + user[i]["created_at"] + "<br><br>")
+        }
+
     });
     e.preventDefault();
   });
-  });
+});
 
-// $("a.all-reviews").on("click", function(e){
-//   $.ajax({
-//     url: this.href,
-//     dataType: 'script'
-//   })
-//   e.preventDefault();
-// })
-
-//   });
 
 
 </script>
