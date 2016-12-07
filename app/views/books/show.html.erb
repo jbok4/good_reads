@@ -43,6 +43,7 @@
           <h3>Be the first to review this book</h3>
           <%= link_to "Write Review", new_book_review_path(@book), class: "btn btn-danger" %>
         <% else %>
+        
         <div id="place-here">
           <%= render @reviews %>
           
@@ -53,12 +54,13 @@
   </div>
 </div>
 
+<!-- this works to create the populated/compiled handlebars template from
+reviews/_formatted.html.erb, doesnt actually load here, prepends to "place-here" above -->
 <%= render "reviews/formatted" %>
 
 
 <script>
-
-      
+  
     $('.star-rating').raty({
       path: '/assets/',
       readOnly: true,
@@ -66,6 +68,5 @@
             return $(this).attr('data-score');
     }
   })
-
  
 </script>

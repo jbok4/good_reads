@@ -1,5 +1,6 @@
 // Links with write a review link on book show page 
-// renders form partial and escapes the html with js
+// creates a Review object from json and compiles it into handlebars
+// renders form partial from handlebars (_formatted.html.erb) and escapes the html with js
 
 
 $("#book_review").hide().after('<%= j render("form") %>');

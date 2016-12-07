@@ -3,31 +3,29 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-        <div class="col-md-8">
+      <div class="col-md-8">
 
-<p class="userName"><strong>User: </strong><%= @user.name %></p>
+          <p class="userName"><strong>User: </strong><%= @user.name %></p>
+          <p class="userEmail"><strong>Email: </strong><%= @user.email %></p></br>
 
-<p class="userEmail"><strong>Email: </strong><%= @user.email %></p></br>
+          <a href="#" class="js-reviews" data-id="<%=@user.id%>">Most Recent Review</a></br>
+          <p id="inject"></p>
 
-<a href="#" class="js-reviews" data-id="<%=@user.id%>">Most Recent Review</a></br>
-<p id="inject"></p>
+          <!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
 
-<!-- <%#= link_to "Load Reviews", user_reviews_path(@user), :class => "userReviews" %></br> -->
-
- <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br><br>
-<div id="inject-all">
-  <%#= render @reviews %>
-</div>
-
+          <a href="#" class="all-reviews" data-id="<%=@user.id%>">All Reviews</a></br><br>
+          <div id="inject-all"><%#= render @reviews %></div>
+            
           <a href="#" class="js-next" data-id="<%=@user.id%>">Next...</a>
-        </div>
-
+      </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
+
+  // this loads the next user via ajax
   $(".js-next").on("click", function(e) {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.get("/users/" + nextId + ".json", function(data) {
@@ -47,38 +45,32 @@ $(function () {
   });
 
 
-// this works to load the users most recent review. 
+  // this loads the users most recent review. 
   $(".js-reviews").on("click", function(e) {
-
     var nextId = parseInt($(".js-next").attr("data-id"));
     $.get("/users/" + nextId + ".json", function(data) {
- 
       var user = data["user"];
-      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"]);
-
+      
+      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"])
     });
     e.preventDefault();
   });
 
 
- // this works to load all the users reviews. 
+  // this loads all the users reviews. 
   $(".all-reviews").on("click", function(e) {
-
     var id = parseInt($(".js-next").attr("data-id"));
     
     $.get("/users/" + id + ".json", function(data) {
         var user = data["user"]["reviews"];
 
         for (i = 0; i < user.length; i++) { 
-          console.log(user[i]["comment"])
-          $("#inject-all").append(user[i]["comment"] + " posted " + user[i]["created_at"] + "<br><br>")
+          // console.log(user[i]["comment"])
+          $("#inject-all").append(user[i]["comment"] + "<br>posted " + user[i]["created_at"] + "<br><br>")
         }
-
     });
     e.preventDefault();
   });
 });
-
-
 
 </script>
