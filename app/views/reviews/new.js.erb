@@ -2,9 +2,7 @@
 // renders form partial and escapes the html with js
 
 
-  $("#book_review").hide().after('<%= j render("form") %>');
-
-
+$("#book_review").hide().after('<%= j render("form") %>');
 
 function Review(attributes){
   this.comment = attributes.comment;
@@ -35,8 +33,9 @@ $(function(){
           var source   = $("#entry-template").html();
           var template = Handlebars.compile(source);
           var html    = template(json);
-          // console.log(json)
+          console.log(json)
           $("#place-here").prepend(html);
+          $("#new_review").hide()
 
 
       }, error:  function(jqxhr, textStatus, error) {
