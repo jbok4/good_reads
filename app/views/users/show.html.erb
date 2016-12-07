@@ -51,7 +51,7 @@ $(function () {
     $.get("/users/" + nextId + ".json", function(data) {
       var user = data["user"];
       
-      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"])
+      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"]);
     });
     e.preventDefault();
   });
@@ -66,7 +66,7 @@ $(function () {
 
         for (i = 0; i < user.length; i++) { 
           // console.log(user[i]["comment"])
-          $("#inject-all").append(user[i]["comment"] + "<br>posted " + user[i]["created_at"] + "<br><br>")
+          $("#inject-all").append(user[i]["comment"] + "<br>Posted " + user[i]["created_at"] + "<br><br>");
         }
     });
     e.preventDefault();
