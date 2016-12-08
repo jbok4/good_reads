@@ -66,7 +66,7 @@ $(function () {
 
         for (i = 0; i < user.length; i++) { 
           // console.log(user[i]["comment"])
-          $("#inject-all").append(user[i]["comment"] + "<br>Posted " + user[i]["created_at"] + "<br><br>");
+          $("#inject-all").append(user[i]["comment"] + "<br>Posted " + user[i]["created_at"].slice(0, -1).strftime("%A, %d %b %Y %l:%M %p") + "<br><br>");
         }
     });
     e.preventDefault();
