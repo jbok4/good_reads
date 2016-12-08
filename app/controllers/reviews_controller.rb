@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
     @review.book_id = @book.id
 
     if @review.save
-      response = {review: @review, username: @review.user.name }
+      response = {review: @review, created_at: @review.time_in_words, username: @review.user.name }
       respond_to do |f|
         f.html {redirect_to @book}
         f.json { render json: response, adapter: :json }

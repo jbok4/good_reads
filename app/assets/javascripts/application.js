@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require handlebars
+//= require moment
 //= require_tree .

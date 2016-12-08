@@ -65,8 +65,11 @@ $(function () {
         var user = data["user"]["reviews"];
 
         for (i = 0; i < user.length; i++) { 
-          // console.log(user[i]["comment"])
-          $("#inject-all").append(user[i]["comment"] + "<br>Posted " + user[i]["created_at"].slice(0, -1).strftime("%A, %d %b %Y %l:%M %p") + "<br><br>");
+          var date = (user[i]["created_at"].slice(0, -1));
+          var dateNew = new Date(date);
+          var momentNew = moment(dateNew).format("MMM Do YY");
+          console.log(momentNew)
+          $("#inject-all").append(user[i]["comment"] + "<br>Posted " + momentNew + "<br><br>");
         }
     });
     e.preventDefault();

@@ -2,9 +2,6 @@
 // creates a Review object from json and compiles it into handlebars
 // renders form partial from handlebars (_formatted.html.erb) and escapes the html with js
 
-Handlebars.registerHelper('dateEnglish', function(review) {
-  return review.created_at.slice(0, -1).strftime("%A, %d %b %Y %l:%M %p");
-});
 
 
 $("#book_review").hide().after('<%= j render("form") %>');
@@ -17,10 +14,6 @@ function Review(attributes){
   this.created_at = attributes.created_at;
 }
 
-
-// Review.prototype.renderTemplate = function() {
-  
-// }
 
 //wait for page to load
 $(function(){
@@ -43,7 +36,7 @@ $(function(){
           // Compile the source info from the form into a handlebars template
           var template = Handlebars.compile(source);
           var html    = template(json);
-          console.log(json)
+          // console.log(json)
           // Render the review into the page
           $("#place-here").prepend(html);
           // Hide the form after its submitted
