@@ -8,7 +8,7 @@
     <img alt="5" src="/assets/star-off.png" title="bad">
     <input name="score" type="hidden" value="{{ review.rating }}" readonly=""></div>
 
-      <p><em id="review_user_name">{{ username }}</em> posted a review {{ review.created_at }}:</p>
+      <p><em id="review_user_name">{{ username }}</em> posted a review {{ dateEnglish review }}:</p>
     <p id="review_comment">{{ review.comment }}</p>
   </div>
 </script>

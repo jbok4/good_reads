@@ -2,6 +2,10 @@
 // creates a Review object from json and compiles it into handlebars
 // renders form partial from handlebars (_formatted.html.erb) and escapes the html with js
 
+Handlebars.registerHelper('dateEnglish', function(review) {
+  return review.created_at.slice(0, -1).strftime("%A, %d %b %Y %l:%M %p");
+});
+
 
 $("#book_review").hide().after('<%= j render("form") %>');
 
@@ -13,17 +17,21 @@ function Review(attributes){
   this.created_at = attributes.created_at;
 }
 
+
 // Review.prototype.renderTemplate = function() {
   
 // }
 
+//wait for page to load
 $(function(){
   $('#new_review').on('submit', function(e) {
     
-
     var $form = $(this);
     var action = $form.attr("action");
+    // The attr() method sets or returns attributes and values of the selected elements.
     var params = $form.serialize();
+    // The serialize() method creates a URL encoded text string by serializing form values.
+    // The serialized values can be used in the URL query string when making an AJAX request.
 
     $.ajax({
         url: action,
@@ -32,10 +40,13 @@ $(function(){
         method: "POST",
         success: function(json) {
           var source   = $("#entry-template").html();
+          // Compile the source info from the form into a handlebars template
           var template = Handlebars.compile(source);
           var html    = template(json);
           console.log(json)
+          // Render the review into the page
           $("#place-here").prepend(html);
+          // Hide the form after its submitted
           $("#new_review").hide()
 
 
