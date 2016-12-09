@@ -65,7 +65,7 @@ $(function () {
         var user = data["user"]["reviews"];
 
         for (i = 0; i < user.length; i++) { 
-          var date = (user[i]["created_at"].slice(0, -1));
+          var date = (user[i]["created_at"]);
           var dateNew = new Date(date);
           var momentNew = moment(dateNew).format("MMM Do YY");
           console.log(momentNew)
