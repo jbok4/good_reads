@@ -6,8 +6,14 @@ class ReviewsController < ApplicationController
   before_action :set_book, except: [:index, :show]
 
   def index
-    @reviews = Review.all.order("created_at DESC")
-    render :layout => false
+    # binding.pry
+    if !!params[:user_id]
+      @reviews = Review.all.where("user_id = ?", params[:user_id])
+    else
+      @reviews = Review.all.order("created_at DESC")
+    end
+
+    render json: @reviews
   end
 
   def new
