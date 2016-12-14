@@ -31,11 +31,11 @@ $(function () {
     $.get("/users/" + nextId + ".json", function(data) {
  
       var user = data["user"];
-      $(".userName").text("User: " + user["name"]);
-      $(".userEmail").text("Email: " + user["email"]);
+      $(".userName").text("User: " + user.name);
+      $(".userEmail").text("Email: " + user.email);
 
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", user["id"]);
+      $(".js-next").attr("data-id", user.id);
       // re-set the reviews to blank
       $("#inject").html("");
       $("#inject-all").html("");
@@ -47,11 +47,10 @@ $(function () {
 
   // this loads the users most recent review. 
   $(".js-reviews").on("click", function(e) {
+
     var nextId = parseInt($(".js-next").attr("data-id"));
-    $.get("/users/" + nextId + ".json", function(data) {
-      var user = data["user"];
-      
-      $("#inject").text(user["reviews"][user.reviews.length-1]["comment"]);
+    $.get("/users/" + nextId + "/reviews", function(data) {
+      $("#inject").text(data[data.length-1].comment);
     });
     e.preventDefault();
   });
@@ -60,15 +59,13 @@ $(function () {
   // this loads all the users reviews. 
   $(".all-reviews").on("click", function(e) {
     var id = parseInt($(".js-next").attr("data-id"));
-    
     $.get("/users/" + id + "/reviews", function(data) {
-    
 
         for (i = 0; i < data.length; i++) { 
           var date = (data[i].created_at.slice(0, -1));
           var dateNew = new Date(date);
           var momentNew = moment(dateNew).format("MMM Do YY");
-          console.log(momentNew)
+          // console.log(momentNew)
           $("#inject-all").append(data[i].comment + "<br>Posted " + momentNew + "<br><br>");
         }
     });
