@@ -62,7 +62,7 @@ $(function () {
     $.get("/users/" + id + "/reviews", function(data) {
 
         for (i = 0; i < data.length; i++) { 
-          var date = (data[i].created_at.slice(0, -1));
+          var date = (data[i].created_at);
           var dateNew = new Date(date);
           var momentNew = moment(dateNew).format("MMM Do YY");
           // console.log(momentNew)
