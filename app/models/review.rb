@@ -7,7 +7,7 @@ class Review < ActiveRecord::Base
   validates :comment, presence: true
 
   def time_in_words
-    self.created_at.strftime("%A, %d %b %Y %l:%M %p")
+    self.created_at.strftime("%A, %b %d")
   end
 
 end
