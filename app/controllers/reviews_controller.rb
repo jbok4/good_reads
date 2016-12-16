@@ -32,20 +32,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    @review.book_id = @book.id
-
+    @review = @book.reviews.build(review_params)
+    @review.user = current_user
     if @review.save
-      response = {review: @review, created_at: @review.time_in_words, username: @review.user.name }
-      respond_to do |f|
-        f.html {redirect_to @book}
-        f.json { render json: response, adapter: :json }
-
-      end
+      response = { review: @review, created_at: @review.time_in_words, username: @review.user.name }
+      render json: response
     else
-      render 'new'
+      render json: { errors: @review.errors.full_messages }
     end
   end
 

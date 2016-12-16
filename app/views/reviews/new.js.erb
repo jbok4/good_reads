@@ -18,7 +18,7 @@ function Review(attributes){
 //wait for page to load
 $(function(){
   $('#new_review').on('submit', function(e) {
-    
+    e.preventDefault()
     var $form = $(this);
     var action = $form.attr("action");
     // The attr() method sets or returns attributes and values of the selected elements.
@@ -27,29 +27,51 @@ $(function(){
     // The serialized values can be used in the URL query string when making an AJAX request.
 
     $.ajax({
-        url: action,
-        data: params,
-        dataType: "json",
-        method: "POST",
-        success: function(json) {
-          var source   = $("#entry-template").html();
-          // Compile the source info from the form into a handlebars template
-          var template = Handlebars.compile(source);
-          var html    = template(json);
-          // console.log(json)
-          // Render the review into the page
-          $("#place-here").prepend(html);
-          // Hide the form after its submitted
-          $("#new_review").hide()
-
-
-      }, error:  function(jqxhr, textStatus, error) {
-        console.log(jqxhr, textStatus, error)
-      }
-
+      url: action,
+      data: params,
+      dataType: "json",
+      method: "POST",
     })
-    e.preventDefault();
-
+    // received a pending promise (could take .1 ms or 3 years)
+    .success(function(data) {
+      if (!data.errors) {
+        var source   = $("#entry-template").html();
+        // Compile the source info from the form into a handlebars template
+        var template = Handlebars.compile(source);
+        var html    = template(data);
+        // console.log(data)
+        // Render the review into the page
+        $("#place-here").prepend(html);
+        // Hide the form after its submitted
+        $("#new_review").hide()
+      } else {
+        for (var i = 0; i < data.errors.length; i++) {
+          $("#new_review").prepend(data.errors[i]);
+        }
+        return 
+      }
+    })
+    // }, function(){
+    //   getAccountInfo()
+    // })
+    .error(function(jqxhr, textStatus, error) {
+      console.log(jqxhr, textStatus, error)
+    })
+    
   })
+
+  // function getAccountInfo() {
+  //    $.ajax({
+  //     url: "/users/1/account_info",
+  //     dataType: "json",
+  //     method: "GET",
+  //   })
+  //   .then(function(data) {
+  //     $("account_info").append(data.account_info.status)
+  //   })
+  //   .error(function(error) {
+  //     console.log(error)
+  //   })
+  // }
 
 })
